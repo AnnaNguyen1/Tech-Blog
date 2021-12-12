@@ -26,12 +26,10 @@
     "express-handlebars": "^6.0.2",
     "express-session": "^1.17.2",
     "mysql2": "^2.3.3",
-    "nodemon": "^2.0.15",
     "sequelize": "^6.12.0-beta.1",
     "watch": "^1.0.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15",
-    "npm-watch": "^0.11.0"
+    "nodemon": "^2.0.15"
   }
 }
