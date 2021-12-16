@@ -1,0 +1,25 @@
+<div class="blog-posts">
+  <div class="card" style="width: 100%">
+    <div class="card-header darkpeach">
+      <h4>Blog Posts</h4>
+    </div>
+    <table class="table table-striped">
+      <thead>
+        <th scope="col">Title</th>
+        <th scope="col">User</th>
+        <th scope="col">Date</th>
+        <th scope="col">Content</th>
+      </thead>
+      <tbody>
+        {{#each blogs as |blog|}}
+          <tr>
+            <th scope="row"><a href="/blog/{{blog.id}}">{{blog.title}}</a></th>
+            <td>{{blog.user.name}}</td>
+            <td>{{format_date blog.dateCreated}}</td>
+            <td>{{blog.description}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>

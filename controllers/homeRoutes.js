@@ -22,7 +22,7 @@ router.get("/signup", (req, res) => {
 });
 
 // homePage containing blog posts that don't need Auth
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const blogData = await Blog.findAll({
       include: [

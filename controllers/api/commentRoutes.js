@@ -5,34 +5,34 @@ const { Op } = require("sequelize");
 
 // Post
 router.post("/", withAuth, async (req, res) => {
-    try {
-        const commentData = await Comment.create({
-            ...req.body,
-            userId = req.session.userId,
-        });
-        res.status(200).json(commentData);
-    } catch (err) {
-        res.status(500).json(err);
-    }
+  try {
+    const commentData = await Comment.create({
+      ...req.body,
+      userId: req.session.userId,
+    });
+    res.status(200).json(commentData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 // Delete
-router.delete("/:id", withAuth, async (req,res) => {
-    try {
-        const commentData = await Comment.destroy({
-            where: {
-                id = req.params.id,
-                userId = req.session.userId,
-            },
-        });
-        if (!commentData) {
-            res.status(404).json({message: "No blog post found!"});
-            return;
-        }
-        res.status (200).json(commentData);
-    } catch (err) {
-        res.status(500).json(err);
+router.delete("/:id", withAuth, async (req, res) => {
+  try {
+    const commentData = await Comment.destroy({
+      where: {
+        id: req.params.id,
+        userId: req.session.userId,
+      },
+    });
+    if (!commentData) {
+      res.status(404).json({ message: "No blog post found!" });
+      return;
     }
+    res.status(200).json(commentData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 module.exports = router;
