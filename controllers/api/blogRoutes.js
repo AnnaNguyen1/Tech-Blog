@@ -16,6 +16,38 @@ router.post("/", withAuth, async (req, res) => {
   }
 });
 
+// Get
+
+router.get("/:id", withAuth, async (req, res) => {
+  try {
+    const blogId = await Blog.findOne({
+      user_id: req.session.user_id,
+      where: {
+        id: req.params.id,
+      },
+      attributes: ["id", "title", "dateCreated", "description"],
+      include: [
+        {
+          model: User,
+          attributes: ["name"],
+        },
+        {
+          model: Comment,
+          attributes: ["id", "blogId", "userId", "dateCreated", "comments"],
+        },
+      ],
+    });
+    if (!blogId) {
+      res.status(404).json({ message: "No blog found!" });
+      return;
+    }
+    res.status(200).json(blogId);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 // Delete
 router.delete("/:id", withAuth, async (req, res) => {
   try {

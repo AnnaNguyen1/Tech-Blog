@@ -2,6 +2,7 @@ const router = require("express").Router();
 const { User, Blog, Comment } = require("../models");
 const withAuth = require("../utils/auth.js");
 const { Op } = require("sequelize");
+const res = require("express/lib/response");
 
 // login
 router.get("/login", (req, res) => {
@@ -37,6 +38,41 @@ router.get("/", async (req, res) => {
 
     res.render("homepage", {
       blogs,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// Blog Id
+router.get("/blog/:id", withAuth, async (req, res) => {
+  try {
+    const blogData = await Blog.findOne({
+      where: {
+        id: req.params.id,
+      },
+      attributes: ["id", "title", "dateCreated", "description"],
+      include: [
+        {
+          model: Comment,
+          attributes: ["id", "blogId", "userId", "comments"],
+          include: {
+            model: User,
+            attributes: ["name"],
+          },
+        },
+      ],
+    });
+    if (!blogData) {
+      res.status(404).json({ message: "No blog found" });
+      return;
+    }
+
+    const data = blogData.get({ plain: true });
+
+    res.render("comments", {
+      data,
       logged_in: req.session.logged_in,
     });
   } catch (err) {

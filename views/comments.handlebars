@@ -1,0 +1,18 @@
+{{#if logged_in}}
+  <div class="card m-5">
+    <h5 class="card-header">{{blog.title}}</h5>
+    <div class="card-body">
+      <p class="card-text">{{blog.description}}</p>
+    </div>
+  </div>
+
+  <form class="comment-form">
+    <div>
+      <textarea name="comment-body" id="comment"></textarea>
+    </div>
+
+    <div>
+      <button class="btn" type="submit">Add Comment</button>
+    </div>
+  </form>
+{{/if}}
