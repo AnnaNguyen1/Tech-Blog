@@ -1,12 +1,37 @@
 {{#if logged_in}}
   <div class="card m-5">
-    <h5 class="card-header">{{blog.title}}</h5>
-    <div class="card-body">
-      <p class="card-text">{{blog.description}}</p>
-    </div>
-  </div>
+        <h5 class="card-header">{{title}}</a></h5>
+        <div class="card-body">
+          <p class="card-text">{{description}}</p>
+          <div class="text-muted space-between">
+            <ul>
+              <li>Created by
+            {{user.name}}
+            on
+            {{dateCreated}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-  <form class="comment-form">
+      <div class="card m-5">
+        <h5 class="card-header">Comments</a></h5>
+        <div class="card-body">
+
+            {{#each comments as |comment|}}
+          <p class="card-text">{{comment.comments}}</p>
+          <div class="text-muted space-between">
+            <ul>
+              <li>
+            {{comment.user.name}}
+            </ul>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+
+
+  <form class="comment-form m-5">
     <div>
       <textarea name="comment-body" id="comment"></textarea>
     </div>

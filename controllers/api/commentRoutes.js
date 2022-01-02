@@ -2,6 +2,18 @@ const router = require("express").Router();
 const { Blog, Comment, User } = require("../../models");
 const withAuth = require("../../utils/auth");
 const { Op } = require("sequelize");
+const res = require("express/lib/response");
+
+// Get
+router.get("/", withAuth, async (req, res) => {
+  try {
+    const commentData = await Comment.findAll({});
+    res.status(200).json(commentData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
 // Post
 router.post("/", withAuth, async (req, res) => {

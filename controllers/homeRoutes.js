@@ -46,7 +46,7 @@ router.get("/", async (req, res) => {
 });
 
 // Blog Id
-router.get("/blog/:id", withAuth, async (req, res) => {
+router.get("/blogs/:id", withAuth, async (req, res) => {
   try {
     const blogData = await Blog.findOne({
       where: {
@@ -59,7 +59,7 @@ router.get("/blog/:id", withAuth, async (req, res) => {
           attributes: ["id", "blogId", "userId", "comments"],
           include: {
             model: User,
-            attributes: ["name"],
+            attributes: ["id", "name"],
           },
         },
       ],
@@ -76,6 +76,7 @@ router.get("/blog/:id", withAuth, async (req, res) => {
       logged_in: req.session.logged_in,
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });

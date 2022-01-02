@@ -24,15 +24,15 @@ Comment.init(
         model: "user",
         key: "id",
       },
-      dateCreated: {
-        type: DataTypes.DATE,
-        allowNull: false,
-        defaultValue: DataTypes.NOW,
-      },
-      comments: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
+    },
+    dateCreated: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+    },
+    comments: {
+      type: DataTypes.STRING,
+      allowNull: false,
     },
   },
   {
