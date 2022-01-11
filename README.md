@@ -19,7 +19,7 @@ To install onto your local environment:
 - Clone the repository: `https://github.com/AnnaNguyen1/Tech-Blog.git`
 - Run `npm i` to install all the relevant dependencies.
 - Update .env file to include your username and password for MySQL
-- Connect to mySql by running `mysql -u root -p` and run command `source db/schema.sqk`.
+- Connect to mySql by running `mysql -u root -p` and run command `source db/schema.sql`.
 - Seed file by running `npm run seed`
 - Run `npm run watch`
 
