@@ -1,43 +1,43 @@
 {{#if logged_in}}
-  <div class="card m-5">
-        <h5 class="card-header">{{title}}</a></h5>
+  <div class="card m-5 poppins">
+        <h5 class="card-header">{{data.title}}</a></h5>
         <div class="card-body">
-          <p class="card-text">{{description}}</p>
+          <p class="card-text">{{data.description}}</p>
           <div class="text-muted space-between">
             <ul>
               <li>Created by
-            {{user.name}}
+            {{data.user.name}}
             on
-            {{dateCreated}}</li>
+            {{format_date data.dateCreated}}</li>
             </ul>
           </div>
         </div>
       </div>
 
-      <div class="card m-5">
+      <div class="card m-5 poppins">
         <h5 class="card-header">Comments</a></h5>
         <div class="card-body">
-
-            {{#each comments as |comment|}}
+            {{#each data.comments as |comment|}}
           <p class="card-text">{{comment.comments}}</p>
           <div class="text-muted space-between">
             <ul>
-              <li>
-            {{comment.user.name}}
+              <li>{{comment.user.name}}</li>
             </ul>
           </div>
+          {{/each}}
         </div>
       </div>
-      {{/each}}
+      
 
 
-  <form class="comment-form m-5">
+  <form class="comment-form m-5 poppins">
     <div>
-      <textarea name="comment-body" id="comment"></textarea>
+      <textarea name="comment-body" id="comment" rows="4" cols="100"></textarea>
     </div>
 
-    <div>
-      <button class="btn" type="submit">Add Comment</button>
+    <div class="d-md-flex justify-content">
+      <button class="btn-sm poppins" type="submit">Add Comment</button>
     </div>
   </form>
 {{/if}}
+<script src="/js/comments.js"></script>

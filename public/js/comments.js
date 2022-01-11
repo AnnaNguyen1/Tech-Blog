@@ -1,10 +1,11 @@
 const commentFormHandler = async (event) => {
   event.preventDefault();
 
-  const comment = document.querySelector("#comment").value.trim();
+  const comments = document.querySelector("#comment").value.trim();
 
   const blogUrl = window.location.toString().split("/");
-  const blogId = blogUrl[2].pop();
+  console.log(blogUrl);
+  const blogId = blogUrl[4];
   console.log(blogId);
 
   if (comment) {

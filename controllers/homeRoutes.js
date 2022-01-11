@@ -62,6 +62,10 @@ router.get("/blogs/:id", withAuth, async (req, res) => {
             attributes: ["id", "name"],
           },
         },
+        {
+          model: User,
+          attributes: ["name"],
+        },
       ],
     });
     if (!blogData) {

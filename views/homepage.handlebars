@@ -1,11 +1,11 @@
 <div class="blog-posts m-5">
-    <h4>Blog Posts</h4>
+    <h4 class = "poppins">Blog Posts</h4>
 
     {{#each blogs as |blog|}}
       <div class="card m-5">
-        <h5 class="card-header"><a href="/blogs/{{blog.id}}">{{blog.title}}</a></h5>
+        <h5 class="card-header poppins"><a href="/blogs/{{blog.id}}">{{blog.title}}</a></h5>
         <div class="card-body">
-          <p class="card-text">{{blog.description}}</p>
+          <p class="card-text poppins">{{blog.description}}</p>
           <div class="text-muted space-between">
             <ul>
               <li>Created by
